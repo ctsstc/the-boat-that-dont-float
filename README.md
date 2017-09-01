@@ -1,5 +1,6 @@
 # Titanic: Machine Learning from Disaster
 https://www.kaggle.com/c/titanic
+https://www.kaggle.com/coderswartz/the-boat-that-don-t-float/editnb
 
 ## Resources
 - https://www.kaggle.com/startupsci/titanic-data-science-solutions
