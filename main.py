@@ -1,14 +1,29 @@
-# This Python 3 environment comes with many helpful analytics libraries installed
-# It is defined by the kaggle/python docker image: https://github.com/kaggle/docker-python
-# For example, here's several helpful packages to load in 
+from speedml import Speedml
+sml = Speedml('../input/train.csv',
+              '../input/test.csv',
+              target='Survived',
+              uid='PassengerId')
+# sml.shape()
+# sml.eda()
+# sml.plot.correlate()
+# sml.plot.distribute()
+# sml.plot.continuous('Age')
+# sml.plot.continuous('Fare')
+sml.feature.outliers('Fare', upper=98)
+# sml.plot.continuous('Fare')
+# sml.plot.strip('Pclass', 'Fare')
+# 
+# sml.plot.ordinal('SibSp')
+sml.feature.outliers('SibSp', upper=99)
+# sml.plot.ordinal('SibSp')
+# sml.plot.strip('SibSp', 'Age')
+# 
+# sml.eda()
 
-import numpy as np # linear algebra
-import pandas as pd # data processing, CSV file I/O (e.g. pd.read_csv)
+sml.feature.density('Age')
+sml.train[['Age', 'Age_density']].head()
 
-# Input data files are available in the "../input/" directory.
-# For example, running this (by clicking run or pressing Shift+Enter) will list the files in the input directory
+# Shows to be low density, let's scrap this!
+sml.feature.drop(['Ticket'])
 
-from subprocess import check_output
-print(check_output(["ls", "../input"]).decode("utf8"))
 
-# Any results you write to the current directory are saved as output.
