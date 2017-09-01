@@ -55,3 +55,15 @@ sml.train.head()
 
 sml.feature.extract(new='Title', a='Name', regex=' ([A-Za-z]+)\.')
 sml.plot.crosstab('Title', 'Sex')
+
+# Static Data Re-Mapping
+sml.feature.replace('Title', 'Mlle', 'Miss')
+sml.feature.replace('Title', 'Ms', 'Miss')
+sml.feature.replace('Title', 'Mme', 'Mrs')
+
+# TODO: dynamic remapping, take the outliers and replace them to `Rare`
+sml.feature.replace(a='Title', match=['Lady', 'Countess','Capt', 'Col',\
+'Don', 'Dr', 'Major', 'Rev', 'Sir', 'Jonkheer', 'Dona'], new='Rare')
+
+sml.train[['Name', 'Title']].head()
+
