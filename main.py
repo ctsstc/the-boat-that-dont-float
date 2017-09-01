@@ -29,9 +29,8 @@ sml.train[['Ticket', 'Ticket_density']].head()
 # Shows to be low density, let's scrap this!
 sml.feature.drop(['Ticket'])
 
-sml.plot.crosstab('Survived', 'SibSp')
-
-sml.plot.crosstab('Survived', 'Parch')
+# sml.plot.crosstab('Survived', 'SibSp')
+# sml.plot.crosstab('Survived', 'Parch')
 
 # Add some new features, and transform data
 sml.feature.fillna(a='Cabin', new='Z')
@@ -41,8 +40,8 @@ sml.feature.mapping('Sex', {'male': 0, 'female': 1})
 sml.feature.sum(new='FamilySize', a='Parch', b='SibSp')
 sml.feature.add('FamilySize', 1)
 
-sml.plot.bar('FamilySize', 'Survived')
-sml.plot.bar('Deck', 'Survived')
+#sml.plot.bar('FamilySize', 'Survived')
+#sml.plot.bar('Deck', 'Survived')
 # Drop old fields now that we have new ones
 sml.feature.drop(['Parch', 'SibSp'])
 
@@ -50,8 +49,8 @@ sml.feature.drop(['Parch', 'SibSp'])
 # ie: There are plenty of Cabin/Deck values missing from the data
 sml.feature.impute()
 
-sml.info()
-sml.plot.importance()
+#sml.info()
+#sml.plot.importance()
 sml.train.head()
 
 sml.feature.extract(new='Title', a='Name', regex=' ([A-Za-z]+)\.')
